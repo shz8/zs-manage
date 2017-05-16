@@ -3,10 +3,13 @@ export default {
     app: {},
     init: function (_app) {
         this.app = _app;
+        if(this.app.$config.isWan)
+           this.app.$config.userapi = '/';
     },
     login: function (data, cb) {
         var self = this;
         this.apipost('user/Login', data, function (d) {
+            //console.log(JSON.stringify(d));
             if (d.errorcode != 0)//登录出错
             {
                 self.app.$message.error('登录出错：' + d.errorinfo);

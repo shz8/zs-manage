@@ -3,6 +3,8 @@ export default {
     app: {},
     init: function (_app) {
         this.app = _app;
+        if(this.app.$config.isWan)
+           this.app.$config.dataapi = '/';
     },
     loadConfig: function (cb) {
         this.apipost('pro/API_GetConfig', {}, function (d) {
