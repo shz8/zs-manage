@@ -19,6 +19,17 @@ export const datasource = [
         }
     },
     {
+        path: '/api/table',
+        data: {
+            'data|10':[{
+                'date':'@date',
+                'name':'@cname',
+                'address':'@county(ture)',
+                'logo':'@image("24x24",@color,@cfirst)'
+            }]
+        }
+    },
+    {
         path: '/user/Login',
         data: { "access_token": "fb47de93-88b3-45be-8f9e-8260aa9db394", "starttime": "2017-05-16 17:40", "expiredtime": "2017-06-15 17:40", "refrash_token": "fd6b25cc-34cf-4f3c-9968-1dc0c5138bf4", "data": null, "errorcode": 0, "errorinfo": "" }
     },
