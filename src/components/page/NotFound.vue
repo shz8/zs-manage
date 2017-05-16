@@ -1,7 +1,7 @@
 <template>
     <div>
         <ApiSpan api='API_GetConfig' cache=true></ApiSpan>
-        <el-form ref="form" :model="form" :rules="tData.rules" label-width="80px">
+        <el-form ref="form" :model="form" v-if=false :rules="tData.rules" label-width="80px">
             <ZsFormItem :item='d' :form='form' :key="d.key" v-for="d in tData.items" />
             <el-form-item>
     
@@ -16,6 +16,7 @@
                 <el-button>取消</el-button>
             </el-form-item>
         </el-form>
+        <ZsForm :formdata="tData"></ZsForm>
     </div>
 </template>
 <script>
@@ -31,6 +32,9 @@ export default {
         }
     },
     components: {
+    },
+    boforeMount(){
+        
     },
     mounted() {
         this.form = { StartDate: '', Region: '', Region1: '', Region2: '', Region3: ['r1', 'r2'], Region4: [], IsOpen: '1' };
