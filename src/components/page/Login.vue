@@ -12,7 +12,7 @@
                 <div class="login-btn">
                     <el-button type="primary" @click="submitForm('ruleForm')">登录</el-button>
                 </div>
-                <p style="font-size:12px;line-height:30px;color:#999;">提示 : 请输入工号和密码！<font v-if="isWan" color=red>外网测试，请输入任意工号和密码</font></p>
+                <p style="font-size:12px;line-height:30px;color:red;">提示 : <font v-if="!$config.isWan">请输入工号和密码！</font><font v-if="$config.isWan">外网测试，请输入任意工号和密码</font></p>
             </el-form>
         </div>
     </div>
@@ -37,9 +37,6 @@ export default {
         }
     },
     computed:{
-        isWan(){
-            return this.$config.isWan;
-        }
     },
     methods: {
         submitForm(formName) {
