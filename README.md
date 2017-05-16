@@ -4,7 +4,7 @@
 2、select、checkboxgroup、radiogroup等和约定格式的webapi进行绑定，简化开发工作；
 3、
 # 说明 #
-全部功能只能在公司内网使用，基础功能使用mockjs拦截http请求进行webapi模拟，可以在/src/mock/datasource.js添加模拟api。
+全部功能只能在公司内网使用，基础功能使用mockjs拦截http请求进行webapi模拟，可以在/src/mock/datasource.js添加模拟webapi。
 ## Build Setup
 
 ``` bash
