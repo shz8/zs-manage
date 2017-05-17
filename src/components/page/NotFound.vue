@@ -1,10 +1,9 @@
 <template>
     <div>
         <ApiSpan api='API_GetConfig' cache=true></ApiSpan>
-        <el-form ref="form" :model="form" v-if=false :rules="tData.rules" label-width="80px">
+        <el-form ref="form" :model="form"  v-if=false :rules="tData.rules" label-width="80px">
             <ZsFormItem :item='d' :form='form' :key="d.key" v-for="d in tData.items" />
             <el-form-item>
-    
                 <el-checkbox-group v-model="form.Region4">
                     <el-checkbox label="复选框 A"></el-checkbox>
                     <el-checkbox label="复选框 B"></el-checkbox>
@@ -26,19 +25,16 @@ export default {
             user: { name: 'wxl', pwd: '12345' },
             form: {},
             tData: {},
+            message: 'page'
             //rules: {
             //UserName: [{ required: true, message: '请输入用户名', trigger: 'blur' },{ min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }],
             //Password: [{ type: 'date', required: true, message: '请选择密码', trigger: 'change' }]}
         }
     },
-    components: {
-    },
-    boforeMount(){
-        
+    created() {
+        this.tData = this.getTest();
     },
     mounted() {
-        this.form = { StartDate: '', Region: '', Region1: '', Region2: '', Region3: ['r1', 'r2'], Region4: [], IsOpen: '1' };
-        this.tData = this.getTest();
     },
     methods: {
         getTest() {

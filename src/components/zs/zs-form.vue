@@ -13,20 +13,28 @@ export default {
     props: ['formdata'],
     data() {
         return {
-            form:{Region2:'',Region3:[],IsOpen:'1'}
+            form:{},
+            message:'zs-form'
         }
     },
     computed: {
     },
-    mounted() {
-        let self = this;
-        setTimeout(function() {
-            self.formdata.items.forEach(function(item) {
-                //self.form[item.key] = '';
-            });
-            console.log(self.form)
-        }, 0); 
-
+    beforeMount(){
+        console.log(this.form)
+        for(let idx = 0;idx < this.formdata.items.length;idx++)
+        {
+            let item = this.formdata.items[idx];
+            let self = this;
+            this.$set(this.form,item.key,'');
+            if(item.el == 'checkbox' || (item.el =='select' && item.multiple)) 
+            {
+                console.log(item.key);
+                setTimeout(function() {
+                     self.form[item.key] = [];
+                }, 0);
+            }
+        }
+        console.log(this.form)
     },
     methods: {
         onSubmit() {

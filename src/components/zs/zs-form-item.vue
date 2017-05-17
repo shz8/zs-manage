@@ -24,12 +24,15 @@ export default {
     props: ['form','item'],
     data() {
         return {
-            
+            message:'form-item'
         }
     },
     computed: {
     },
+    created(){
+    },
     mounted() {
+        this.form[this.item.key] = '';
         if(['checkbox','radio','select'].indexOf(this.item.el)> -1 && this.item.api)
         {
             let self = this;
