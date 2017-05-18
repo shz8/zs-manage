@@ -2,7 +2,7 @@
     <el-form ref="form" :rules="formdata.rules" :model="form" label-width="80px">
         <ZsFormItem :item='d' :form='form' :key="d.key" v-for="d in formdata.items" />
         <el-form-item>
-            <el-button type="primary" @click="onSubmit">提交</el-button>
+            <el-button type="primary" @click="onSubmit" v-right="'formsubmit'">提交</el-button>
             <el-button type="primary" @click="onReset">重置</el-button>
         </el-form-item>
     </el-form>
@@ -10,7 +10,7 @@
 <script>
 export default {
     name: 'ZsForm',
-    props: ['formdata'],
+    props: ['formdata','submitApi','formApi'],
     data() {
         return {
             form:{},
@@ -24,7 +24,10 @@ export default {
         {
             let item = this.formdata.items[idx];
             let self = this;
-            this.$set(this.form,item.key,'');
+            if(item.el == 'rate') 
+                this.$set(this.form,item.key,0);
+            else
+                this.$set(this.form,item.key,'');
             if(item.el == 'checkbox' || (item.el =='select' && item.multiple)) 
             {
                 setTimeout(function() {

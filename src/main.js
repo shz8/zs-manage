@@ -18,12 +18,16 @@ axios.defaults.headers.common['appid'] = config.appid;
 Vue.prototype.$axios = axios;
 Vue.prototype.$api = api;
 Vue.prototype.$uti = utility;
+Vue.prototype.$ckRight = function(v)
+{
+    return false;
+}
 //拦截器
 router.beforeEach((to, from, next) => {
     if (!axios.defaults.headers.common['accesstoken']) {
         axios.defaults.headers.common['accesstoken'] = window.localStorage.getItem(config.tokenkey);
     }
-    if (to.path != '/login') {  
+    if (to.path != '/login') {
         if (axios.defaults.headers.common['accesstoken']) {
             next();
         }
@@ -36,6 +40,15 @@ router.beforeEach((to, from, next) => {
     }
     else {
         next();
+    }
+});
+//指令对dom进行权限控制，需要加权限的dom添加属性v-right="'权限名称'"
+Vue.directive('right', {
+    bind: function (el, binding) {
+         if(!Vue.prototype.$ckRight(binding.value))
+         {
+             el && el.parentNode && el.parentNode.removeChild(el);
+         }
     }
 });
 
