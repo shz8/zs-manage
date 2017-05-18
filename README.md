@@ -2,7 +2,7 @@
 基于Vue.js 2.x系列 + Element UI 的公司后台管理系统解决方案。
 1、对基本组件进行封装，基于webapi获取动态表单；
 2、select、checkboxgroup、radiogroup等和约定格式的webapi进行绑定，简化开发工作；
-3、
+3、使用指令对dom进行权限控制
 # 说明 #
 全部功能只能在公司内网使用，基础功能使用mockjs拦截http请求进行webapi模拟，可以在/src/mock/datasource.js添加模拟webapi。
 ## Build Setup
