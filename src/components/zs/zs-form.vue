@@ -3,7 +3,7 @@
         <ZsFormItem :item='d' :form='form' :key="d.key" v-for="d in formdata.items" />
         <el-form-item>
             <el-button type="primary" @click="onSubmit">提交</el-button>
-            <el-button>取消</el-button>
+            <el-button type="primary" @click="onReset">重置</el-button>
         </el-form-item>
     </el-form>
 </template>
@@ -20,7 +20,6 @@ export default {
     computed: {
     },
     beforeMount(){
-        console.log(this.form)
         for(let idx = 0;idx < this.formdata.items.length;idx++)
         {
             let item = this.formdata.items[idx];
@@ -28,13 +27,11 @@ export default {
             this.$set(this.form,item.key,'');
             if(item.el == 'checkbox' || (item.el =='select' && item.multiple)) 
             {
-                console.log(item.key);
                 setTimeout(function() {
                      self.form[item.key] = [];
                 }, 0);
             }
         }
-        console.log(this.form)
     },
     methods: {
         onSubmit() {
@@ -48,6 +45,9 @@ export default {
                 }
             }, (errors, fields) => {
             });
+        },
+        onReset(){
+            this.$refs['form'].resetFields();
         }
     }
 };
