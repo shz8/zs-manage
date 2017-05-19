@@ -6,5 +6,5 @@ module.exports = {
     appid: "T20170407001",
     userkey: "userinfokey",
     tokenkey: "usertokenkey",
-    isWan: true
+    isWan: false
 };

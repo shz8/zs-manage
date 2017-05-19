@@ -8,7 +8,10 @@ export default {
         this.app.$axios({ method: method, url: url, data: data })
             .then(function (res) {
                 let d = res.data ? (res.data.Table1 ? res.data : (res.data.Table ? res.data.Table : res.data)) : {};
-                if (d.length > 0 && d[0].jsonstr) d = JSON.parse(d[0].jsonstr);
+                if (d.length > 0 && d[0].jsonstr) 
+                {
+                    d = JSON.parse(d[0].jsonstr);
+                }
                 typeof success == 'function' && success(d);
             }).catch(function (err) {
                 console.log(err);

@@ -7,7 +7,7 @@ export default {
            this.app.$config.dataapi = '/';
     },
     loadConfig: function (cb) {
-        this.apipost('pro/API_GetConfig', {}, function (d) {
+        this.apipost('pro/API_Price_GetConfig', {}, function (d) {
             let appConfig = {};
             if (d.Table && d.Table.length > 0) {
                 appConfig.appTitle = d.Table[0].appTitle;
@@ -22,7 +22,7 @@ export default {
         });
     },
     findDept: function (cb) {
-        this.apipost('pro/API_FindDept', {}, function (d) {
+        this.apipost('pro/API_Price_FindDept', {}, function (d) {
             typeof cb == 'function' && cb(d.Table||d);
         });
     },
